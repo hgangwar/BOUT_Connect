@@ -1,0 +1,12 @@
+build*/
+cmake-build*/
+*.png
+*.csv
+*.nc
+*.log
+__pycache__/
+.idea/
+!elm_pb/*.nc
+data/*
+!data/BOUT.inp
+!data/*.csv
