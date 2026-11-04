@@ -14,7 +14,6 @@ namespace bout_connect
 struct SliceMeshOptions
 {
   double jitter = 0.0; // > 0: each interior vertex moves by U(-jitter, jitter)
-                       // in ix and in iz
   double shift = 0.0;  // d: every interior vertex moves by (+d, +d)
   unsigned seed = 20260101;
 };

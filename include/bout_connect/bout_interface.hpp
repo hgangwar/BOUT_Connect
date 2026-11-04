@@ -23,7 +23,7 @@ struct BoutSnapshot
   double pmax = 0, pmin = 1e300, pmaxv = -1e300; // max|P|, min P, max P
   std::string attrs;        // direction_y, direction_z, cell_location
   double dz = 0;            // toroidal step, radians
-  std::vector<double> R, Z; // Rxy, Zxy: R[(ix - IX0) + NXI * iy_file]
+  std::vector<double> R, Z; // Rxy, Zxy:
 
   // P at the node (ix - IX0, iy_file, iz); iz wraps periodically.
   double operator()(int ixr, int iy, int iz) const

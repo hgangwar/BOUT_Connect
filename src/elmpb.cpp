@@ -62,7 +62,6 @@ int run_elmpb_monitor(int argc, char** argv,
   BoutFinalise();
   return status;
 }
-
 int option_int(const char* section, const char* key, const char* doc, int dflt)
 {
   return Options::root()[section][key].doc(doc).withDefault(dflt);
