@@ -1,5 +1,5 @@
-// BOUT++-only (host compiler): runs a physics model, pauses it in a monitor, and
-// copies P out into a BoutSnapshot.
+// BOUT++-only (host compiler): runs a physics model, pauses it in a monitor,
+// and copies P out into a BoutSnapshot.
 #pragma once
 
 #include "bout_connect/bout_interface.hpp"
