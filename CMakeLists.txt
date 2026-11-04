@@ -14,6 +14,7 @@ add_library(bout_connect INTERFACE)
 add_library(BOUT_Connect::bout_connect ALIAS bout_connect)
 target_include_directories(bout_connect INTERFACE include)
 target_compile_features(bout_connect INTERFACE cxx_std_17)
+target_compile_definitions(bout_connect INTERFACE BC_DATA_DIR="${CMAKE_CURRENT_SOURCE_DIR}/data")
 
 
 add_library(bc_elmpb STATIC src/elmpb.cpp)

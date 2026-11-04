@@ -28,11 +28,26 @@ public:
 private:
   const std::function<void(double, int, int)>& f_;
 };
+
+// Lets the command line say `nout=N` for BOUT++'s `solver:nout=N`.
+void expand_short_options(int argc, char** argv)
+{
+  static std::vector<std::string> keep;
+  keep.reserve(argc);
+  for (int i = 1; i < argc; ++i) {
+    const std::string a = argv[i];
+    if (a.rfind("nout=", 0) == 0) {
+      keep.push_back("solver:" + a);
+      argv[i] = keep.back().data();
+    }
+  }
+}
 } // namespace
 
 int run_elmpb(int argc, char** argv, const std::function<void()>& after_init,
               const SnapshotWork& work, bool& ran)
 {
+  expand_short_options(argc, argv);
   const int rc = BoutInitialise(argc, argv);
   if (rc != 0)
     return rc;
@@ -54,6 +69,7 @@ int run_elmpb(int argc, char** argv, const std::function<void()>& after_init,
 int run_elmpb_monitor(int argc, char** argv,
                       const std::function<void(double, int, int)>& on_call)
 {
+  expand_short_options(argc, argv);
   const int rc = BoutInitialise(argc, argv);
   if (rc != 0)
     return rc;

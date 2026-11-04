@@ -1,7 +1,7 @@
 """Shared setup for the plot scripts (import it first).
 
 DATA  - where the test outputs (transfer_*.csv, oh2d_*.csv, oh2d_shift/, oh2d_jitter/) are read from:
-        $BC_DATA, default <package>/data (run the tests with that as the working directory).
+        $BC_DATA, default <package>/data (where the tests write their CSVs).
 PLOTS - plot_scripts/plots; the script switches into it, so relative savefig names land there.
 """
 import os

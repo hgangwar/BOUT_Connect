@@ -27,16 +27,18 @@ cmake -S . -B build -DCMAKE_BUILD_TYPE=Release \
 cmake --build build -j 8
 ```
 
-## Run (from `data/`)
+## Run (from `build/`)
 
 ```
-cd data
-../build/coexist -d .
-../build/transfer -d . solver:nout=1
+cd build
+./coexist -d ../data
+./transfer -d ../data nout=1
 ```
+
+`-d ../data` points BOUT++ at `data/BOUT.inp`; the CSVs and `transfer_result.txt` are written to `data/`.
 
 ## Plot
 
 ```
-python plot_scripts/plot_transfer.py
+python plot_scripts/plot_transfer.py   # reads data/*.csv
 ```

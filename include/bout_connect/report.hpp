@@ -13,6 +13,12 @@
 namespace bout_connect
 {
 
+// The tracked data/ folder of the package (set by CMake); test outputs go here.
+inline std::string data_path(const std::string& name)
+{
+  return std::string(BC_DATA_DIR) + "/" + name;
+}
+
 inline FILE* g_rep = nullptr;
 
 template <class... A>

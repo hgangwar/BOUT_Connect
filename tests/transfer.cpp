@@ -140,7 +140,7 @@ void work(const BoutSnapshot& PB, double t, int iter, int nout)
   // Data for the verification plot
   {
     const int ROW = 32;
-    if (FILE* fp = std::fopen("transfer_slice.csv",
+    if (FILE* fp = std::fopen(data_path("transfer_slice.csv").c_str(),
                               "w")) { // the SOURCE slice, 64 x 16 nodes
       std::fprintf(fp, "ix,iz,P_bout\n");
       for (int ix = IX0; ix < IX0 + NXI; ++ix)
@@ -150,7 +150,7 @@ void work(const BoutSnapshot& PB, double t, int iter, int nout)
     }
     size_t nfine = 0;
     if (FILE* fp =
-          std::fopen("transfer_fine_slice.csv",
+          std::fopen(data_path("transfer_fine_slice.csv").c_str(),
                      "w")) { // the TRANSFERRED field on the 2x mesh, same row
       std::fprintf(fp, "ix_real,iz_real,P_pcms\n");
       for (size_t k = 0; k < tn.size(); ++k)
@@ -174,7 +174,7 @@ void work(const BoutSnapshot& PB, double t, int iter, int nout)
     for (size_t c = 0; c < rc.size(); ++c)
       tq[c] = tn[rc[c]];
     const auto fb2 = PB.xz_bilinear(tq);
-    if (FILE* fp = std::fopen("transfer_targets.csv", "w")) {
+    if (FILE* fp = std::fopen(data_path("transfer_targets.csv").c_str(), "w")) {
       std::fprintf(fp, "xi_ix,zeta_iz,P_bout,P_pcms,P_eval\n");
       for (size_t c = 0; c < rc.size(); ++c) {
         const size_t k = rc[c];
@@ -202,7 +202,8 @@ void work(const BoutSnapshot& PB, double t, int iter, int nout)
     const auto pv = eval_points<3>(src_space, src, qr, IndexSpace3D::Create());
     const auto fb3 = PB.xz_bilinear(qr);
     double d5f = 0;
-    if (FILE* fp = std::fopen("transfer_random_targets.csv", "w")) {
+    if (FILE* fp =
+          std::fopen(data_path("transfer_random_targets.csv").c_str(), "w")) {
       std::fprintf(fp, "xi_ix,zeta_iz,P_bout,P_pcms\n");
       for (size_t c = 0; c < qr.size(); ++c) {
         const double b = fb3[c];
@@ -254,7 +255,7 @@ void work(const BoutSnapshot& PB, double t, int iter, int nout)
 int main(int argc, char** argv)
 {
   Kokkos::ScopeGuard kokkos(argc, argv);
-  g_rep = std::fopen("transfer_result.txt", "w");
+  g_rep = std::fopen(data_path("transfer_result.txt").c_str(), "w");
   bool ran = false;
   const int status = run_elmpb(argc, argv, [] {}, work, ran);
   say("\ntransfer finished: the pause %s, BOUT++ exit status %d\n",
