@@ -12,8 +12,7 @@
 namespace bout_connect
 {
 
-// The elm-pb (cbm18_dens8, nx = 68, ny = 64, nz = 16) index grid shared by
-// every test.
+// The elm-pb (cbm18_dens8, nx = 68, ny = 64, nz = 16) index grid
 constexpr int NZ = 16, NY = 64, NXI = 64, IX0 = 2;
 
 struct BoutSnapshot

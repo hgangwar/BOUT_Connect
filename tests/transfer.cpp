@@ -37,7 +37,7 @@ void work(const BoutSnapshot& PB, double t, int iter, int nout)
       "inside the monitor ====\n",
       iter, nout, t);
 
-  // ---------------- capture: P from BOUT++ memory
+  // Capture: P from BOUT++ memory
   const double pmax = PB.pmax, pmin = PB.pmin, pmaxv = PB.pmaxv;
   const std::string& attrs = PB.attrs;
   say(
@@ -45,7 +45,7 @@ void work(const BoutSnapshot& PB, double t, int iter, int nout)
     "attributes: %s\n",
     NXI, NY, NZ, pmin, pmaxv, pmax, attrs.c_str());
 
-  // ---------------- identity: PCMS source field + identity transfer
+  // PCMS source field + identity transfer
   auto t0 = clock::now();
   auto src_space = make_index_space(1);
   auto src = src_space->CreateFunction<pcms::Real>();
@@ -67,7 +67,7 @@ void work(const BoutSnapshot& PB, double t, int iter, int nout)
       "identity transfer vs BOUT++ buffer: max diff = %.3e   [%.2f s]\n",
       sn.size(), d3, secs(t0));
 
-  // ---------------- 2x: transfer
+  // 2x: transfer
   t0 = clock::now();
   auto tgt_space = make_index_space(2);
   auto tgt = tgt_space->CreateFunction<pcms::Real>();
