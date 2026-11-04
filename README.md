@@ -10,9 +10,9 @@ solver is paused in a monitor at the last output step while PCMS works.
 
 ## Layout
 
-- `elm_pb/`: verbatim BOUT-dev elm-pb model and grid (LGPL-3.0).
+- `elm_pb/`: Exact BOUT-dev elm-pb model and grid.
 - `data/`: `BOUT.inp` and the `transfer` CSV output.
-- `include/bout_connect/`: `bout_interface.hpp` (BOUT++-free interface), `bout_runner.hpp` (BOUT++ side), `pcms_util.hpp`, `index_space.hpp`, `report.hpp`, `slice_mesh.hpp` (unused here).
+- `include/bout_connect/`: `bout_interface.hpp` (BOUT++-free interface), `bout_runner.hpp` (BOUT++ side), `pcms_util.hpp`, `index_space.hpp`, `report.hpp`, `slice_mesh.hpp`.
 - `src/elmpb.cpp`: BOUT++ half, built with the host compiler.
 - `tests/`: `coexist.cpp`, `transfer.cpp` (built with nvcc, PCMS half).
 - `plot_scripts/`: `plot_transfer.py`.
